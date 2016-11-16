@@ -4,10 +4,10 @@
     <link rel="icon" type="image/gif/png" href="box.png">
 		<title>Bouncing Boxes by KB</title>
  	</head>
- 	<body bgcolor="teal">
+ 	<body bgcolor='#cae9ef'>
 
     <canvas id="canvas" width="1000";
-  height="500" border= '8px solid black' >
+  height="500" border= '8px solid black' position= 'fixed' left = '50%' margin-left= '-100px'  >
   </canvas>
 
  	<script>
@@ -15,7 +15,7 @@
  		let context = canvas.getContext("2d");
  		const NUM_POINTS = 15;
  		const points = [];
-    const colors =['pink', 'purple', 'crimson']
+    const colors =['pink', 'teal', 'crimson']
 
  		for(let i = 0; i < NUM_POINTS; i++) {
  		  points.push({
@@ -31,16 +31,16 @@
 
  		const draw = function() {
  			context.clearRect(0, 0, canvas.width, canvas.height);
- 			points.forEach( function(currPoint) {
- 				context.fillStyle = colors[currPoint.color];
- 				context.fillRect(currPoint.x, currPoint.y, currPoint.width, currPoint.height);
- 				currPoint.x += currPoint.xDelta;
- 				currPoint.y += currPoint.yDelta;
- 			 	if(currPoint.x+currPoint.width >= 1000 || currPoint.x <= 0) {
- 			 		currPoint.xDelta *= -1;
+ 			points.forEach( function(thePoint) {
+ 				context.fillStyle = colors[thePoint.color];
+ 				context.fillRect(thePoint.x, thePoint.y, thePoint.width, thePoint.height);
+ 				thePoint.x += thePoint.xDelta;
+ 				thePoint.y += thePoint.yDelta;
+ 			 	if(thePoint.x+thePoint.width >= 1000 || thePoint.x <= 0) {
+ 			 		thePoint.xDelta *= -1;
   		}
- 				if(currPoint.y+currPoint.height >= 500 || currPoint.y <= 0) {
- 			 		currPoint.yDelta *= -1;
+ 				if(thePoint.y+thePoint.height >= 500 || thePoint.y <= 0) {
+ 			 		thePoint.yDelta *= -1;
  				}
  			});
  		};
