@@ -7,7 +7,7 @@
  	<body bgcolor="teal">
 
     <canvas id="canvas" width="1000";
-  height="500" >
+  height="500" border= '8px solid black' >
   </canvas>
 
  	<script>
@@ -15,6 +15,7 @@
  		let context = canvas.getContext("2d");
  		const NUM_POINTS = 15;
  		const points = [];
+    const colors =['pink', 'purple', 'crimson']
 
  		for(let i = 0; i < NUM_POINTS; i++) {
  		  points.push({
@@ -24,14 +25,14 @@
  		    height: Math.random()*100,
  		    xDelta: 1,
  		    yDelta: 1,
- 		    color:'maroon'
+ 		    color: Math.floor(Math.random()*3)
  		  });
  		}
 
  		const draw = function() {
  			context.clearRect(0, 0, canvas.width, canvas.height);
  			points.forEach( function(currPoint) {
- 				context.fillStyle = currPoint.color;
+ 				context.fillStyle = colors[currPoint.color];
  				context.fillRect(currPoint.x, currPoint.y, currPoint.width, currPoint.height);
  				currPoint.x += currPoint.xDelta;
  				currPoint.y += currPoint.yDelta;
@@ -46,7 +47,7 @@
 
  		let animate = function() {
  		  draw();
- 		  setTimeout(animate, 3);
+ 		  setTimeout(animate, 5);
  		};
 
  		animate();
