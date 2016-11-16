@@ -5,10 +5,24 @@
 		<title>Bouncing Boxes by KB</title>
  	</head>
  	<body bgcolor='#cae9ef'>
-
+<marquee behavior="alternate"><h2>Bouncing Boxes Everywhere<h2></marquee>
     <canvas id="canvas" width="1000";
   height="500" border= '8px solid black' position= 'fixed' left = '50%' margin-left= '-100px'  >
   </canvas>
+  <style>
+  #canvas {
+    
+    position:fixed;
+    top:20;
+    left:15%;
+    margin-top:5px;
+    margin-left:-50px;
+    border-color:lightblue;
+                   border-width: 3px;
+                   border-style: solid;
+  };
+
+  </style>
 
  	<script>
  		let canvas = document.getElementById("canvas");
