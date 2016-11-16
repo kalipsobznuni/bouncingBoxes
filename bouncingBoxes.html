@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+ <html>
+ 	<head>
+    <link rel="icon" type="image/gif/png" href="favicon.png">
+		<title>Bouncing Boxes by KB</title>
+ 	</head>
+ 	<body bgcolor="teal">
+
+    <canvas id="canvas" width="1000";
+  height="500" >
+  </canvas>
+
+ 	<script>
+ 		let canvas = document.getElementById("canvas");
+ 		let context = canvas.getContext("2d");
+ 		const NUM_POINTS = 13;
+ 		const points = [];
+
+ 		for(let i = 0; i < NUM_POINTS; i++) {
+ 		  points.push({
+ 		    x: Math.random() * canvas.width,
+ 		    y: Math.random() * canvas.height,
+ 		    width: Math.random()*100,
+ 		    height: Math.random()*100,
+ 		    xDelta: 1,
+ 		    yDelta: 1,
+ 		    color:'maroon'
+ 		  });
+ 		}
+
+ 		const draw = function() {
+ 			context.clearRect(0, 0, canvas.width, canvas.height);
+ 			points.forEach( function(currPoint) {
+ 				context.fillStyle = currPoint.color;
+ 				context.fillRect(currPoint.x, currPoint.y, currPoint.width, currPoint.height);
+ 				currPoint.x += currPoint.xDelta;
+ 				currPoint.y += currPoint.yDelta;
+ 			 	if(currPoint.x+currPoint.width >= 1000 || currPoint.x <= 0) {
+ 			 		currPoint.xDelta *= -1;
+  		}
+ 				if(currPoint.y+currPoint.height >= 500 || currPoint.y <= 0) {
+ 			 		currPoint.yDelta *= -1;
+ 				}
+ 			});
+ 		};
+
+ 		let animate = function() {
+ 		  draw();
+ 		  setTimeout(animate, 3);
+ 		};
+
+ 		animate();
+ 	</script>
+
+ 	</body>
+ </html>
